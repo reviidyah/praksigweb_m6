@@ -1,0 +1,97 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Leaflet Web Map</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <style> 
+    html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        #map { 
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        #title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            background: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+    </style> 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+</head> 
+<body>
+    <div id="title">Rute dari Kost Putri Melati ke Teknik Geodesi UGM</div>
+
+    <div id="map"></div>
+    <script> 
+    var map = L.map('map',{ center: [-7.79558, 110.36949], zoom: 12 });
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', 
+    { attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' })
+    .addTo(map); 
+    
+    //rute kost ke geodesi
+    L.Routing.control({
+    waypoints: [
+    L.latLng(-7.772790777228523, 110.36989719171135), //kost
+    L.latLng(-7.763840560626304, 110.37266902420501) //geodesi
+    ]
+    }).addTo(map);
+    
+    //geodesi
+    var geodesi = L.marker([-7.763840560626304, 110.37266902420501])
+    .bindPopup('<h2>Teknik Geodesi UGM</h2><img src="https://masuk-ptn.com/images/department/407673973acec76cec3d2309861790f78606d8f5.jpg" style="width:200px; display:block; margin:auto;">')
+    .addTo(map);
+    
+    //kost
+    var kost = L.marker([-7.772790777228523, 110.36989719171135])
+    .bindPopup('<h2>Kost Putri Melati</h2>').addTo(map);
+
+    //gmc
+    var GMC = L.marker([-7.772473507973101, 110.37509799536923])
+    .bindPopup('<h2>Gadjah Mada Medical Center</h2><img src="https://gmc.ugm.ac.id/wp-content/uploads/sites/50/2013/10/21-825x457.jpg" style="width:200px; display:block; margin:auto;">')
+    .addTo(map);
+    
+    //fkkmk
+    var fkkmk = L.marker([-7.769408435555031, 110.37403580981268])
+    .bindPopup('<h2>FKKMK UGM</h2><img src="https://ugm.ac.id/wp-content/uploads/2020/11/1311201605250013852135362.jpg" style="width:200px; display:block; margin:auto;">')
+    .addTo(map);
+
+    //sardjito
+    var sardjito = L.marker([-7.768557832493554, 110.37345810642836])
+    .bindPopup('<h2>Rumah Sakit Umum Dr.Sardjito</h2><img src="https://awsimages.detik.net.id/community/media/visual/2020/03/17/6b9796f3-3ca3-4e52-a030-6dfa6e132ad8_169.jpeg?w=650" style="width:200px; display:block; margin:auto;">')
+    .addTo(map);
+
+    //asrama sendowo
+    var asrama = L.marker([-7.771647108183271, 110.37290550710557])
+    .bindPopup('<h2>Retnaningsih Sendowo Residence UGM</h2><img src="https://residence.ugm.ac.id/wp-content/uploads/sites/1094/2024/10/DSC01499-scaled-700x400.jpg" style="width:200px; display:block; margin:auto;">')
+    .addTo(map);
+
+    //fakultas biologi
+    var biologi = L.marker([-7.765209791903117, 110.37660878002573])
+    .bindPopup('<h2>Fakultas Biologi UGM</h2><img src="https://ugm.ac.id/wp-content/uploads/2022/11/fak-biologi1.jpg" style="width:200px; display:block; margin:auto;">')
+    .addTo(map);
+
+    //pascasarjana
+    var pascasarjana = L.marker([-7.763540664205416, 110.3756403328449])
+    .bindPopup('<h2>Sekolah Pascasarjana UGM</h2><img src="https://www.pasca.ugm.ac.id/fotopost/1000xe212c68e47d9f3e54f793d877ff785c6.jpg" style="width:200px; display:block; margin:auto;">')
+    .addTo(map);
+    </script> 
+</body> 
+</html> 
